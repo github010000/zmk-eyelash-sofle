@@ -1,5 +1,24 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+**/._*
+**/.DS_Store
+Thumbs.db
+
+# VS Code settings and workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# ZMK/West build artifacts (만약을 위해 추가)
 build/
-zmk/
-modules/
-tools/
 .west/
+bin/
+
+# Python (기존 파이썬 관심사 반영)
+__pycache__/
+*.py[cod]
+*$py.class
