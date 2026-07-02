@@ -7,5 +7,7 @@ on:
 
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    # 재사용 워크플로를 west.yml의 zmk 핀(v0.3.0)과 정합 — @main 은 최신 Zephyr HWMv2
+    # 의 `west boards --format {qualifiers}` 를 요구해 구버전 boards.py 와 KeyError 충돌.
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3.0
 
