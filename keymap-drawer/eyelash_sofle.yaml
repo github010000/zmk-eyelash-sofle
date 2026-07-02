@@ -63,7 +63,7 @@ layers:
   - $$mdi:keyboard-space$$
   - {t: '$$mdi:keyboard-return$$', type: enter}
   - SYSTEM
-  - $$mdi:apple-keyboard-shift$$
+  - RGUI
   - $$mdi:backspace-reverse-outline$$
   SYMBOL:
   - F12
