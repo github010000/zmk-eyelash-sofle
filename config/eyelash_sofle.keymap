@@ -59,8 +59,8 @@
             bindings = <
 &kp F12     &kp F1     &kp F2     &kp F3      &kp F4     &kp F5    &mmv MOVE_UP    &kp F6     &kp F7     &kp F8     &kp F9     &kp F10     &trans
 &trans      &kp GRAVE  &mkp LCLK  &mkp MCLK   &mkp RCLK  &mkp MB4  &mmv MOVE_DOWN  &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &kp MINUS   &kp EQUAL
-&kp CAPS    &kp TILDE  &trans     &trans      &trans     &mkp MB5  &mmv MOVE_LEFT  &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &kp LBKT    &kp RBKT
-&trans      &rgb_ug RGB_OFF &rgb_ug RGB_ON &rgb_ug RGB_EFF &rgb_ug RGB_EFR &rgb_ug RGB_SPI &mmv MOVE_RIGHT &rgb_ug RGB_BRI &rgb_ug RGB_BRD &kp INSERT &kp F11 &kp F12 &trans
+&kp CAPS    &kp TILDE  &kp LG(D)  &kp LG(LS(D)) &kp LG(LS(W)) &mkp MB5  &mmv MOVE_LEFT  &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &kp LBKT    &kp RBKT
+&trans      &kp LG(LA(LEFT)) &kp LG(LA(DOWN)) &kp LG(LA(UP)) &kp LG(LA(RIGHT)) &rgb_ug RGB_SPI &mmv MOVE_RIGHT &rgb_ug RGB_BRI &rgb_ug RGB_BRD &kp INSERT &kp F11 &kp F12 &trans
 &kp C_MUTE  &trans     &trans     &trans      &trans     &trans    &mkp LCLK       &trans     &trans     &trans     &trans     &trans
             >;
             // Layer 1 롤러: 마우스 스크롤 (보강 완료)
