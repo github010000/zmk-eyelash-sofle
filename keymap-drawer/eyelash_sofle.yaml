@@ -94,9 +94,9 @@ layers:
   - {t: '=', s: +}
   - $$mdi:apple-keyboard-caps$$
   - '~'
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: D, h: '$$mdi:apple-keyboard-command$$'}
+  - Gui+Sft+D
+  - Gui+Sft+W
   - '&mkp MB5'
   - {t: '$$mdi:menu-left$$', s: '$$mdi:mouse$$'}
   - $$mdi:arrow-left-bold$$
@@ -106,10 +106,10 @@ layers:
   - {t: '[', s: '{'}
   - {t: ']', s: '}'}
   - {t: '$$mdi:transfer$$', type: trans}
-  - RGB OFF
-  - RGB ON
-  - RGB EFF
-  - RGB EFR
+  - Gui+Alt+$$mdi:arrow-left-bold$$
+  - Gui+Alt+$$mdi:arrow-down-bold$$
+  - Gui+Alt+$$mdi:arrow-up-bold$$
+  - Gui+Alt+$$mdi:arrow-right-bold$$
   - RGB SPI
   - {t: '$$mdi:menu-right$$', s: '$$mdi:mouse$$'}
   - RGB BRI
