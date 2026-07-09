@@ -73,7 +73,7 @@
             bindings = <
 &kp TILDE  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &mmv MOVE_UP     &trans  &trans  &trans  &trans  &trans  &trans
 &trans     &bt BT_CLR    &bt BT_CLR_ALL &kp LC(LEFT) &kp LC(RIGHT) &trans          &mmv MOVE_DOWN   &trans  &trans  &trans  &trans  &kp UNDER &kp PLUS
-&trans     &out OUT_USB  &out OUT_BLE  &kp LG(D)     &kp LG(LS(D)) &kp LG(LS(W))   &mmv MOVE_LEFT   &trans  &trans  &trans  &trans  &kp LBRC  &kp RBRC
+&trans     &kp TILDE     &out OUT_BLE  &kp LG(D)     &kp LG(LS(D)) &kp LG(LS(W))   &mmv MOVE_LEFT   &trans  &trans  &trans  &trans  &kp LBRC  &kp RBRC
 &kp LG(LA(LEFT)) &sys_reset &kp LG(LA(DOWN)) &bootloader &kp LG(LA(UP)) &kp LG(LA(RIGHT)) &mmv MOVE_RIGHT  &trans  &trans  &sys_reset &soft_off &bootloader &trans
 &trans     &trans        &trans        &trans        &trans        &trans          &mkp LCLK        &trans  &trans  &trans  &trans  &trans
             >;
