@@ -11,7 +11,7 @@
 #include <dt-bindings/zmk/rgb.h>
 
 &mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
-&msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
+&msc_input_listener { input-processors = <&zip_scroll_scaler 3 1>; };
 
 &msc {
     acceleration-exponent = <1>;
@@ -49,8 +49,8 @@
 &kp LSHFT   &kp Z      &kp X      &kp C       &kp V      &kp B     &kp RIGHT   &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH    &mt RSHFT ENTER
 &kp C_MUTE  &kp LCTRL  &kp LGUI   &kp LALT    &mo 1      &kp SPACE &kp ENTER   &kp SPACE  &mo 3      &mo 2      &kp F18    &kp DEL
             >;
-            // Layer 0 롤러: 볼륨 조절
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            // Layer 0 롤러: 마우스 스크롤 (기본) — 볼륨은 SYSTEM 홀드로 이동
+            sensor-bindings = <&scroll_encoder>;
         };
 
         // Layer 1: Symbol & Mouse (개발용 기호 배치)
@@ -77,7 +77,8 @@
 &kp LG(LA(LEFT)) &sys_reset &kp LG(LA(DOWN)) &bootloader &kp LG(LA(UP)) &kp LG(LA(RIGHT)) &mmv MOVE_RIGHT  &trans  &trans  &sys_reset &soft_off &bootloader &trans
 &trans     &trans        &trans        &trans        &trans        &trans          &mkp LCLK        &trans  &trans  &trans  &trans  &trans
             >;
-            sensor-bindings = <&scroll_encoder>;
+            // Layer 2 롤러: 볼륨 조절 (기본 롤러가 스크롤로 바뀌면서 이동)
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         // Layer 3: WIN — 윈도우 머신(BT 슬롯2) 단축키. 오른엄지 &mo 3 홀드 → 왼손 자리 배치
