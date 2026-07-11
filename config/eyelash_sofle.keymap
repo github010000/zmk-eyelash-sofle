@@ -20,11 +20,19 @@
 };
 
 / {
-    // 롤러(인코더) 동작 정의: 마우스 스크롤 전용
+    // 롤러(인코더) 동작 정의: 마우스 세로 스크롤
     scroll_encoder: scroll_encoder {
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
         bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+        tap-ms = <100>;
+    };
+
+    // 롤러 가로 스크롤: 세로 스크롤과 같은 방향감 (아래로 굴림 = 오른쪽)
+    scroll_h_encoder: scroll_h_encoder {
+        compatible = "zmk,behavior-sensor-rotate";
+        #sensor-binding-cells = <0>;
+        bindings = <&msc SCRL_RIGHT>, <&msc SCRL_LEFT>;
         tap-ms = <100>;
     };
 
@@ -63,8 +71,8 @@
 &trans      &rgb_ug RGB_OFF &rgb_ug RGB_ON &rgb_ug RGB_EFF &rgb_ug RGB_EFR &rgb_ug RGB_SPI &mmv MOVE_RIGHT &rgb_ug RGB_BRI &rgb_ug RGB_BRD &kp INSERT &kp F11 &kp F12 &trans
 &kp C_MUTE  &trans     &trans     &trans      &trans     &trans    &mkp LCLK       &trans     &trans     &trans     &trans     &trans
             >;
-            // Layer 1 롤러: 마우스 스크롤 (보강 완료)
-            sensor-bindings = <&scroll_encoder>;
+            // Layer 1 롤러: 가로 스크롤 (넓은 코드·표 좌우 이동)
+            sensor-bindings = <&scroll_h_encoder>;
         };
 
         // Layer 2: System & Bluetooth
@@ -93,7 +101,8 @@
 &trans  &kp LG(L)     &trans       &trans            &kp LG(V)          &trans           &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans        &trans       &trans            &trans             &trans           &trans  &trans  &trans  &trans  &trans  &trans
             >;
-            sensor-bindings = <&scroll_encoder>;
+            // Layer 3 롤러: 탭 전환 (Ctrl+PgDn/PgUp — 브라우저·에디터 공통, 맥·윈도우 동일)
+            sensor-bindings = <&inc_dec_kp LC(PG_DN) LC(PG_UP)>;
         };
 
         // Layer 4: ZMK Studio 확장용 2
