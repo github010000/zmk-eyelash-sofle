@@ -28,6 +28,14 @@
         tap-ms = <100>;
     };
 
+    // 롤러 가로 스크롤: 세로 스크롤과 같은 방향감 (아래로 굴림 = 오른쪽)
+    scroll_h_encoder: scroll_h_encoder {
+        compatible = "zmk,behavior-sensor-rotate";
+        #sensor-binding-cells = <0>;
+        bindings = <&msc SCRL_RIGHT>, <&msc SCRL_LEFT>;
+        tap-ms = <100>;
+    };
+
     combos {
         compatible = "zmk,combos";
         softoff {
@@ -63,8 +71,8 @@
 &trans      &rgb_ug RGB_OFF &rgb_ug RGB_ON &rgb_ug RGB_EFF &rgb_ug RGB_EFR &rgb_ug RGB_SPI &mmv MOVE_RIGHT &rgb_ug RGB_BRI &rgb_ug RGB_BRD &kp INSERT &kp F11 &kp F12 &trans
 &kp C_MUTE  &trans     &trans     &trans      &trans     &trans    &mkp LCLK       &trans     &trans     &trans     &trans     &trans
             >;
-            // Layer 1 롤러: 세로 스크롤 (⌘=/⌘- 줌은 수식키 폭주로 stuck ⌘ 유발해 기각 — 2026-07-12)
-            sensor-bindings = <&scroll_encoder>;
+            // Layer 1 롤러: 가로 스크롤 (롤러+수식키 조합은 stuck 수식키 유발로 금지 — 2026-07-12)
+            sensor-bindings = <&scroll_h_encoder>;
         };
 
         // Layer 2: System & Bluetooth
@@ -84,17 +92,18 @@
         // Layer 3: WIN — 윈도우 머신(BT 슬롯2) 단축키. 오른엄지 &mo 3 홀드 → 왼손 자리 배치
         //   (구 오른엄지 ENTER 자리 — 스페이스 착각 조기전송 사고 무해화 겸용)
         //   윗줄 = 가상 데스크톱(W/E/R/T·G), 홈행 = 앱전환·캡처·바탕화면·탐색기, Z=잠금 V=클립보드
+        //   오른손 H/L = 이전/다음 탭 (Ctrl+PgUp/PgDn, vim 방향감 — 맥·윈도우 공통)
         layer3 {
             display-name = "WIN";
             bindings = <
 &trans  &trans        &trans       &trans            &trans             &trans           &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp LA(F4)    &kp LG(TAB)  &kp LC(LG(LEFT))  &kp LC(LG(RIGHT))  &kp LC(LG(D))    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp LA(TAB)   &kp LG(LS(S)) &kp LG(D)        &kp LG(E)          &kp LC(LG(F4))   &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LA(TAB)   &kp LG(LS(S)) &kp LG(D)        &kp LG(E)          &kp LC(LG(F4))   &trans  &kp LC(PG_UP)  &trans  &trans  &kp LC(PG_DN)  &trans  &trans
 &trans  &kp LG(L)     &trans       &trans            &kp LG(V)          &trans           &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans        &trans       &trans            &trans             &trans           &trans  &trans  &trans  &trans  &trans  &trans
             >;
-            // Layer 3 롤러: 탭 전환 (Ctrl+PgDn/PgUp — 브라우저·에디터 공통, 맥·윈도우 동일)
-            sensor-bindings = <&inc_dec_kp LC(PG_DN) LC(PG_UP)>;
+            // Layer 3 롤러: 세로 스크롤 (탭전환은 stuck Ctrl 유발로 기각 → H/L 키로 이동)
+            sensor-bindings = <&scroll_encoder>;
         };
 
         // Layer 4: ZMK Studio 확장용 2
