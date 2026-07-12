@@ -63,8 +63,8 @@
 &trans      &rgb_ug RGB_OFF &rgb_ug RGB_ON &rgb_ug RGB_EFF &rgb_ug RGB_EFR &rgb_ug RGB_SPI &mmv MOVE_RIGHT &rgb_ug RGB_BRI &rgb_ug RGB_BRD &kp INSERT &kp F11 &kp F12 &trans
 &kp C_MUTE  &trans     &trans     &trans      &trans     &trans    &mkp LCLK       &trans     &trans     &trans     &trans     &trans
             >;
-            // Layer 1 롤러: 확대/축소 (⌘= / ⌘- — 아래굴림=확대, 맥 기준)
-            sensor-bindings = <&inc_dec_kp LG(EQUAL) LG(MINUS)>;
+            // Layer 1 롤러: 세로 스크롤 (⌘=/⌘- 줌은 수식키 폭주로 stuck ⌘ 유발해 기각 — 2026-07-12)
+            sensor-bindings = <&scroll_encoder>;
         };
 
         // Layer 2: System & Bluetooth
