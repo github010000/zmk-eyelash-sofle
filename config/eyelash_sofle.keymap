@@ -71,8 +71,8 @@
 &trans      &rgb_ug RGB_OFF &rgb_ug RGB_ON &rgb_ug RGB_EFF &rgb_ug RGB_EFR &rgb_ug RGB_SPI &mmv MOVE_RIGHT &rgb_ug RGB_BRI &rgb_ug RGB_BRD &kp INSERT &kp F11 &kp F12 &trans
 &kp C_MUTE  &trans     &trans     &trans      &trans     &trans    &mkp LCLK       &trans     &trans     &trans     &trans     &trans
             >;
-            // Layer 1 롤러: 가로 스크롤 (롤러+수식키 조합은 stuck 수식키 유발로 금지 — 2026-07-12)
-            sensor-bindings = <&scroll_h_encoder>;
+            // Layer 1 롤러: 해제 (기본과 동일한 세로 스크롤 — 가로는 WIN 홀드로 이동)
+            sensor-bindings = <&scroll_encoder>;
         };
 
         // Layer 2: System & Bluetooth
@@ -102,8 +102,8 @@
 &trans  &kp LG(L)     &trans       &trans            &kp LG(V)          &trans           &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans        &trans       &trans            &trans             &trans           &trans  &trans  &trans  &trans  &trans  &trans
             >;
-            // Layer 3 롤러: 세로 스크롤 (탭전환은 stuck Ctrl 유발로 기각 → H/L 키로 이동)
-            sensor-bindings = <&scroll_encoder>;
+            // Layer 3 롤러: 가로 스크롤 (오른엄지 홀드+왼손 롤러 = 양손 자세)
+            sensor-bindings = <&scroll_h_encoder>;
         };
 
         // Layer 4: ZMK Studio 확장용 2
