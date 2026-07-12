@@ -36,6 +36,29 @@
         tap-ms = <100>;
     };
 
+    // SYSTEM 레이어 파괴 키 홀드 가드: 1.5초 이상 길게 눌러야 발동, 짧은 탭 = 무동작
+    // (레이어 latch 상태에서 오타로 bootloader/reset/off 진입하는 사고 방지 — 2026-07-12)
+    boot_hold: boot_hold {
+        compatible = "zmk,behavior-hold-tap";
+        #binding-cells = <2>;
+        tapping-term-ms = <1500>;
+        bindings = <&bootloader>, <&none>;
+    };
+
+    rst_hold: rst_hold {
+        compatible = "zmk,behavior-hold-tap";
+        #binding-cells = <2>;
+        tapping-term-ms = <1500>;
+        bindings = <&sys_reset>, <&none>;
+    };
+
+    off_hold: off_hold {
+        compatible = "zmk,behavior-hold-tap";
+        #binding-cells = <2>;
+        tapping-term-ms = <1500>;
+        bindings = <&soft_off>, <&none>;
+    };
+
     combos {
         compatible = "zmk,combos";
         softoff {
@@ -75,14 +98,14 @@
             sensor-bindings = <&scroll_encoder>;
         };
 
-        // Layer 2: System & Bluetooth
+        // Layer 2: System & Bluetooth — 파괴 키는 1.5초 홀드 필요(Z·,=reset, C·/=bootloader, .=soft_off), BT_CLR_ALL 제거
         layer2 {
             display-name = "SYSTEM";
             bindings = <
 &kp TILDE  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &mmv MOVE_UP     &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &bt BT_CLR    &bt BT_CLR_ALL &kp LC(LEFT) &kp LC(RIGHT) &trans          &mmv MOVE_DOWN   &trans  &trans  &trans  &trans  &kp UNDER &kp PLUS
+&trans     &bt BT_CLR    &none          &kp LC(LEFT) &kp LC(RIGHT) &trans          &mmv MOVE_DOWN   &trans  &trans  &trans  &trans  &kp UNDER &kp PLUS
 &trans     &kp TILDE     &out OUT_BLE  &kp LG(D)     &kp LG(LS(D)) &kp LG(LS(W))   &mmv MOVE_LEFT   &trans  &trans  &trans  &trans  &kp LBRC  &kp RBRC
-&kp LG(LA(LEFT)) &sys_reset &kp LG(LA(DOWN)) &bootloader &kp LG(LA(UP)) &kp LG(LA(RIGHT)) &mmv MOVE_RIGHT  &trans  &trans  &sys_reset &soft_off &bootloader &trans
+&kp LG(LA(LEFT)) &rst_hold 0 0 &kp LG(LA(DOWN)) &boot_hold 0 0 &kp LG(LA(UP)) &kp LG(LA(RIGHT)) &mmv MOVE_RIGHT  &trans  &trans  &rst_hold 0 0 &off_hold 0 0 &boot_hold 0 0 &trans
 &trans     &trans        &trans        &trans        &trans        &trans          &mkp LCLK        &trans  &trans  &trans  &trans  &trans
             >;
             // Layer 2 롤러: 볼륨 조절 (기본 롤러가 스크롤로 바뀌면서 이동)
